@@ -1,11 +1,12 @@
 $primary-color: #FCFAFA;
+$secondary: #424B54;
 
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 14vh;
-    border-bottom: 4vh solid #424B54;
+    border-bottom: 4vh solid $secondary;
     padding: 0 30px;
     background-color: $primary-color;
 
