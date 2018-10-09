@@ -1,10 +1,13 @@
+$primary-color: #FCFAFA;
+
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 14vh;
-    border-bottom: 4vh solid black;
+    border-bottom: 4vh solid #424B54;
     padding: 0 30px;
+    background-color: $primary-color;
 
     .navLinks {
         align-self: flex-end;
@@ -12,6 +15,10 @@
         .navButtons{
             margin: 0 2vw .5vw;
             font-size: 20px;
+            font-weight: bold;
+            background-color: $primary-color;
+            border: none;
+            cursor: pointer;
         }
     }
 }

@@ -1,0 +1,34 @@
+
+.brewList{
+    display: flex;
+    flex-wrap: wrap;
+
+    .brewCard{
+        display: flex;
+        align-items: center;
+        margin: 20px auto;
+        border: 15px solid #424B54;
+        height: 15vh;
+        width: 37vw;
+        padding: 1vw 2vw;
+    
+        .brewLogo {
+            height: 85px;
+            width: 85px;
+        }
+        
+        .brewInfo {
+            flex-direction: column;
+            margin-left: 2vw;
+            line-height: 20px;
+            letter-spacing: 2px;
+
+            .brewName {
+                font-size: 20px;
+                font-weight: bold;
+                margin-bottom: 6px;
+            }
+        }
+    }
+}
+
