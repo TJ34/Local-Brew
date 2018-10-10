@@ -7,7 +7,7 @@ const UPDATE_BREWERY_INFO = "UPDATE_BREWERY_INFO";
 function reducer(state=initialState, action){
     switch(action.type){
         case UPDATE_BREWERY_INFO:
-        return Object.assign({}, state, {brewery_info: action.payload});
+        return Object.assign({}, state, {brewery_info: action.payload.data});
 
         default: return state;
     }

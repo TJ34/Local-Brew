@@ -1,2 +1,4 @@
 SELECT * FROM beers
-where id = $1;
+JOIN breweries
+ON breweries.brewery_name = beers.brewery
+WHERE beers.id = $1;

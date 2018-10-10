@@ -1,0 +1,30 @@
+.beerHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 14vh;
+    background-color: #435058;
+    padding: 0 3vw;
+
+    .headerImage {
+        height: 11vh;
+        width: 11vh;
+    }
+}
+
+.beerInfo {
+    display: flex;
+
+    .labelPic {
+        height: 60vh;
+        width: 25vw;
+        margin: 4vw;
+     }
+
+     .stats {
+         margin: 4vw 6vw;
+         line-height: 30px;
+         font-size: 20px;
+         letter-spacing: 1px;
+     }
+}

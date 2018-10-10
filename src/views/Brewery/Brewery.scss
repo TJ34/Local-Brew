@@ -1,0 +1,74 @@
+.nameHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 6vh;
+    font-size: 45px;
+    font-weight: bold;
+    margin: 20px;
+}
+
+.topHalf{
+
+    display: flex;
+    justify-content: space-between;
+
+    .logoDesc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    width: 45%;
+    margin: 3vw 0 0 4vw;
+
+        .logo{
+            height: 325px;
+            width: 325px;
+            margin: 0 40px;
+        }
+    }
+
+    .mapAddress {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 60vh;
+        width: 45%;
+        margin: 4vw 3vw 0 3vw;
+
+        .brewMap {
+            height: 50vh;
+            width: 38vw;
+            border: 1px solid black;
+
+            .brewIcon {
+                font-size: 35px;
+            }
+        }
+    }
+}
+
+
+.brList {
+    display: flex;
+    flex-wrap: wrap;
+
+    .beerCard {
+        height: 200px;
+        width: 200px;
+        border: 3px solid black;
+        margin: 40px auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 35px;
+        text-align: center;
+        border-radius: 5%;
+        background-color: #FCFAFA;
+        color: black;
+        text-decoration: none;
+        
+    }
+}
