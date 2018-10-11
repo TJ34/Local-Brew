@@ -5,8 +5,6 @@ import axios from 'axios';
 import BreweryMarkers from './BreweryMarkers';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {Link} from 'react-router-dom';
-import {connect} from 'react-redux';
-import {updateBrewInfo} from '../../ducks/reducer';
 
 class Breweries extends Component {
     constructor(){
@@ -23,18 +21,11 @@ class Breweries extends Component {
         })
     }
 
-    getBandB = (id) => {
-        axios.get(`/api/bandb/${id}`).then(response => {
-            this.props.updateBrewInfo(response);
-        })
-    }
-
     render(){
         let list = this.state.breweries.map((brewery, i) => {
             return (
-            <Link to="/breweries/brewery" 
+            <Link to={`/breweries/brewery/${brewery.id}`} 
                   key={i} className="brewCard"
-                  onClick={() => this.getBandB(brewery.id)}
             >
                 <img src={brewery.brew_logo} className="brewLogo" alt="oops!"/>
                 <div className="brewInfo">
@@ -57,12 +48,4 @@ class Breweries extends Component {
     }
 }
 
-function mapStateToProps(state){
-    const{brewery_info} = state;
-
-    return {
-        brewery_info
-    }
-}
-
-export default connect(mapStateToProps,{updateBrewInfo})(Breweries);
+export default Breweries;

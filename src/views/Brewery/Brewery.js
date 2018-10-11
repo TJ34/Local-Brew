@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
 import Header from '../../components/Header/Header';
 import GoogleMapReact from "google-map-react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Brewery.scss';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
+import {connect} from 'react-redux';
 
 const google_key = process.env.REACT_APP_GOOGLE_API_KEY;
 const Brew = ({text}) => <div>{text}</div>
@@ -13,28 +14,36 @@ class Brewery extends Component {
     constructor() {
         super();
         this.state = {
-          center: {
-            lat: null,
-            lng: null
-          },
+            brewery_info: [],
+            center: {
+                lat: null,
+                lng: null
+            },
           zoom: 11
         };
       }
-    
-      componentDidMount(){
-        setTimeout(function(){
-            this.setState({center: {
-                lat: +this.props.brewery_info[0].lat,
-                lng: +this.props.brewery_info[0].long
-            }})
-        }.bind(this), 100)  
-      }
+      
+    componentDidMount(){
+        axios.get(`/api/bandb/${+this.props.match.params.id}`).then(response => {
+            this.setState({brewery_info: response.data, center: {lat: +response.data[0].lat, lng: +response.data[0].long}});
+        })
+    }
+
+    addToFavorites = (beer_name, beer_label, beer_desc, abv, style, brewery, user_id) => {
+        axios.post('/api/favorites', {beer_name, beer_label, beer_desc, abv, style, brewery, user_id})
+    }
+
     render(){
-        const {brewery_info} = this.props
+        console.log(this.props);
+        const {brewery_info} = this.state;
         let beerList = brewery_info.map((beer, i) => {
             return (
                 <Link to={`/breweries/brewery/beer/${beer.id}`} key={i} className="beerCard">
-                        <FontAwesomeIcon icon={['far', 'heart']} className="heartIcon"/>
+                        <FontAwesomeIcon 
+                            icon={['far', 'heart']} 
+                            className="heartIcon"
+                            onClick={() => this.addToFavorites(beer.beer_name, beer.beer_label, beer.beer_desc, beer.abv, beer.style, beer.brewery, this.props.user.user.data.id)}
+                        />
                         <p>{beer.beer_name}</p>
                 </Link>
             )
@@ -65,7 +74,7 @@ class Brewery extends Component {
                     </GoogleMapReact>
                     </div>
                     <p>{brewery_info[0] && brewery_info[0].brewery_address}</p>
-                    <p>{brewery_info[0] && brewery_info[0].brewery_city}, {brewery_info[0] && brewery_info[0].brewery_state}</p>
+                    <p>{brewery_info[0] && brewery_info[0].brewery_city}, {brewery_info.brewery_state}</p>
                 </div>
               </div>
               <div className="brList">
@@ -75,10 +84,6 @@ class Brewery extends Component {
         )}
 }
 
-function mapStateToProps(state){
-    return {
-        brewery_info: state.brewery_info
-    }
-}
+const mapStateToProps = state => state;
 
-export default connect(mapStateToProps)(Brewery);
+export default connect (mapStateToProps)(Brewery);
