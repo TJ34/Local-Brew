@@ -25,6 +25,7 @@ export default class Beer extends Component {
                 <img src={beer.brew_logo} className="headerImage" alt="Not Available"/>
                 <Logo />
             </div>
+            <button onClick={() => this.props.history.goBack()}>Back</button>
             <div className="beerInfo">
                 <img src={beer.beer_label} className="labelPic" alt="Not Available"/>
                 <div className="stats">

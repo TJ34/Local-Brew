@@ -1,0 +1,30 @@
+.favsList {
+    display: flex;
+    flex-wrap: wrap;
+
+    .outerFav {
+        position: relative;
+        margin: 30px auto;
+    }
+
+    .delButton {
+        position: absolute;
+        z-index: 2;
+        right: 10px;
+        top: 10px;
+        cursor: pointer;
+    }
+
+    .favCard {
+        height: 350px;
+        width: 250px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        z-index: 0;
+        border: 2px solid black;
+        cursor: -webkit-grab;
+    }
+}

@@ -16,9 +16,9 @@
     display: flex;
 
     .labelPic {
-        height: 60vh;
-        width: 40vw;
         margin: 4vw;
+        max-width: 164px;
+        max-height: 262px;
      }
 
      .stats {

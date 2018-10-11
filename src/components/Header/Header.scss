@@ -10,16 +10,37 @@ $secondary: #424B54;
     padding: 0 30px;
     background-color: $primary-color;
 
-    .navLinks {
-        align-self: flex-end;
+    .rightNav{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-end;
+        height: 14vh;
 
-        .navButtons{
-            margin: 0 2vw .5vw;
-            font-size: 20px;
-            font-weight: bold;
-            background-color: $primary-color;
-            border: none;
-            cursor: pointer;
-        }
+            .logInOut {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: .5vh;
+                padding: 5px;
+                border-radius: 5px;
+                height: 2vw;
+                width: 4vw;
+                font-size: 15px;
+                font-weight: bold;
+                border: 1px solid black;
+                color: $secondary;
+            }
+    
+            .navButtons{
+                margin: 0 0 .1vh 3vw;
+                font-size: 25px;
+                font-weight: bold;
+                background-color: $primary-color;
+                border: none;
+                cursor: pointer;
+            }  
     }
+
+    
 }

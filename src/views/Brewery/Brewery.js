@@ -29,8 +29,8 @@ class Brewery extends Component {
         })
     }
 
-    addToFavorites = (beer_name, beer_label, beer_desc, abv, style, brewery, user_id) => {
-        axios.post('/api/favorites', {beer_name, beer_label, beer_desc, abv, style, brewery, user_id})
+    addToFavorites = (beer_name, beer_label, beer_desc, abv, style, brewery, user_id, beer_id) => {
+        axios.post('/api/favorites', {beer_name, beer_label, beer_desc, abv, style, brewery, user_id, beer_id})
     }
 
     render(){
@@ -38,14 +38,17 @@ class Brewery extends Component {
         const {brewery_info} = this.state;
         let beerList = brewery_info.map((beer, i) => {
             return (
-                <Link to={`/breweries/brewery/beer/${beer.id}`} key={i} className="beerCard">
-                        <FontAwesomeIcon 
+                <div className="outerDiv" key={i}>
+                    <FontAwesomeIcon 
                             icon={['far', 'heart']} 
                             className="heartIcon"
-                            onClick={() => this.addToFavorites(beer.beer_name, beer.beer_label, beer.beer_desc, beer.abv, beer.style, beer.brewery, this.props.user.user.data.id)}
-                        />
-                        <p>{beer.beer_name}</p>
-                </Link>
+                            onClick={() => this.addToFavorites(beer.beer_name, beer.beer_label, beer.beer_desc, beer.abv, beer.style, beer.brewery, this.props.user.user.data.id, beer.id)}
+                    />
+                    <Link 
+                        to={`/breweries/brewery/beer/${beer.id}`}  className="beerCard">  
+                            <p>{beer.beer_name}</p>
+                    </Link>
+                </div>
             )
         })
 

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import Header from '../../components/Header/Header';
 import axios from 'axios';
+import './Favorites.scss';
+import {Link} from 'react-router-dom';
 
 class Favorites extends Component {
     constructor(){
@@ -18,12 +20,26 @@ class Favorites extends Component {
         })
     }
 
+    deleteFavorite = (id) => {
+        axios.delete(`api/favorites/${id}`).then(response => {
+            this.setState({favs: response.data})
+        })
+    }
+
     render(){
         let favsList = this.state.favs && this.state.favs.map((fav, i) => {
             return (
-                <div key={i}>
-                   <img src={fav.beer_label} alt="Not Available"/>
-
+                <div key={i} className="outerFav">
+                    <button onClick={() => this.deleteFavorite(fav.id)} className="delButton">X</button>
+                    <Link
+                      to={`/breweries/brewery/beer/${fav.beer_id}`}
+                      className="favCard"
+                    >
+                        <img src={fav.beer_label} alt="Not Available"/>
+                        <p>{fav.beer_name}</p>
+                        <p>{fav.brewery}</p>
+                        <p>{fav.abv} - {fav.style}</p>
+                    </Link>
                 </div>
             )
         })
@@ -31,7 +47,10 @@ class Favorites extends Component {
         return( 
         <div>
             <Header />
-            
+            <h1>Favorites List</h1>
+            <div className="favsList">
+                {favsList}
+            </div>
         </div>
         )}
 }

@@ -53,22 +53,39 @@
 .brList {
     display: flex;
     flex-wrap: wrap;
+    // position: relative;
 
-    .beerCard {
-        height: 200px;
-        width: 200px;
-        border: 3px solid black;
+    .outerDiv {
+        position: relative;
         margin: 40px auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        font-size: 35px;
-        text-align: center;
-        border-radius: 5%;
-        background-color: #FCFAFA;
-        color: black;
-        text-decoration: none;
-        
+
+        .beerCard {
+            height: 200px;
+            width: 200px;
+            border: 3px solid black;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 35px;
+            text-align: center;
+            border-radius: 5%;
+            background-color: #FCFAFA;
+            color: black;
+            text-decoration: none;
+            z-index: 0;
+            cursor: url('https://s3-us-west-1.amazonaws.com/local-brew1/favicon.ico'), auto;
+        }
+    
+        .heartIcon {
+            font-size: 33px;
+            position: absolute;
+            z-index: 2;
+            right: 10px;
+            top: 10px;
+            cursor: pointer;
+        }
     }
+
+    
 }

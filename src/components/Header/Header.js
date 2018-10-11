@@ -8,19 +8,24 @@ class Header extends Component {
     render(){
         return( 
         <div className = "header">
-           <Logo />
-           <nav className = "navLinks">
-             <Link to="/"><button className="navButtons">Home</button></Link>
-             <Link to="/breweries"><button className="navButtons">Breweries</button></Link>
-             <Link to="/beers"><button className="navButtons">Beers</button></Link>
-             {this.props.user.isAuthed ? (<Link to="/favorites"><button className="navButtons">Favorites</button></Link>):null}
-             <div>
-              {!this.props.user.isAuthed ? (<a href={process.env.REACT_APP_LOGIN}>
-                 <div className="navButtons">Login</div>
-              </a>):
-              (<a href={process.env.REACT_APP_LOGOUT}><div className="navButtons">Logout</div></a>)}
-             </div>
-            </nav> 
+            <Logo />
+            <div className="rightNav">
+                <div>
+                    {!this.props.user.isAuthed ? 
+                        (<a href={process.env.REACT_APP_LOGIN}>
+                            <div className="logInOut">Login</div>
+                        </a>):
+                        (<a href={process.env.REACT_APP_LOGOUT}>
+                            <div className="logInOut">Logout</div>
+                        </a>)}
+                </div>
+                <nav>
+                    <Link to="/"><button className="navButtons">Home</button></Link>
+                    <Link to="/breweries"><button className="navButtons">Breweries</button></Link>
+                    <Link to="/beers"><button className="navButtons">Beers</button></Link>
+                    {this.props.user.isAuthed ? (<Link to="/favorites"><button className="navButtons">Favorites</button></Link>):null}
+                </nav>
+            </div>
         </div>
     )}
 }

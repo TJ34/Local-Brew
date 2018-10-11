@@ -6,9 +6,9 @@ module.exports = {
         })
     },
     addFavorite(req,res){
-        const {beer_name, beer_label, beer_desc, abv, style, brewery, user_id} = req.body;
+        const {beer_name, beer_label, beer_desc, abv, style, brewery, user_id, beer_id} = req.body;
         let db=req.app.get('db');
-        db.add_favorite([beer_name, beer_label, beer_desc, abv, style, brewery, user_id]).then(
+        db.add_favorite([beer_name, beer_label, beer_desc, abv, style, brewery, user_id, beer_id]).then(
             favorites => {return res.status(200).json(favorites)}
         )
     },
