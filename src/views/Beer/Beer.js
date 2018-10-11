@@ -2,12 +2,18 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Logo from '../../components/Logo/Logo';
 import './Beer.scss';
+import ReactModal from 'react-modal';
+import StarRatingComponent from 'react-star-rating-component';
+import {connect} from 'react-redux';
 
-export default class Beer extends Component {
+class Beer extends Component {
     constructor() {
         super();
         this.state = {
-            beer: []
+            beer: [],
+            showModal: false,
+            review: '',
+            rating: 0,
          }
         }
 
@@ -17,8 +23,13 @@ export default class Beer extends Component {
         })
     }
 
+    submitReviewCloseModal = (review, star_rating, user_id, beer_id) => {
+        this.setState({showModal: false})
+    }
+
     render(){
-        const {beer} = this.state;
+        console.log(this.props);
+        const {beer, rating, review} = this.state;
         return(
         <div>
             <div className="beerHeader">
@@ -34,6 +45,30 @@ export default class Beer extends Component {
                     <p>{beer.beer_desc}</p>
                 </div>
             </div>
+            <div>
+                <button onClick={() => this.setState({showModal: true})}>Add Review</button>
+                <ReactModal
+                    isOpen={this.state.showModal}
+                    contentLabel="User Review Form"
+                    shouldCloseOnEsc={true}
+                >
+                <h1>{this.state.beer.beer_name} Review</h1>
+                <div>
+                    {this.props.user.user.data.username}
+                    <StarRatingComponent
+                    name="rate1"
+                    value={rating}
+                    onStarClick={(nextValue) => {this.setState({rating: nextValue})}}
+                    />
+                </div>
+                <input onChange={(e) => this.setState({review: e.target.value})}/>
+                <button onClick={() => this.submitReviewCloseModal(review, rating, this.props.user.user.data.id, this.props.match.params.id)}>Submit</button>
+                </ReactModal>
+            </div>
         </div>
         )}
 }
+
+const mapStateToProps = state => state;
+
+export default connect (mapStateToProps)(Beer);

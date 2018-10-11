@@ -34,7 +34,6 @@ class Brewery extends Component {
     }
 
     render(){
-        console.log(this.props);
         const {brewery_info} = this.state;
         let beerList = brewery_info.map((beer, i) => {
             return (
