@@ -11,6 +11,7 @@ const cors = require("cors");
 const breweryCntrl = require(`${__dirname}/controllers/breweryCntrl`);
 const {strat, logout} = require(`${__dirname}/controllers/strategy`);
 const favoritesCntrl = require(`${__dirname}/controllers/favoritesCntrl`);
+const reviewsCntrl = require(`${__dirname}/controllers/reviewsCntrl`);
 
 app.use(json());
 app.use(cors());
@@ -83,5 +84,10 @@ app.get('/api/bandb/:id', breweryCntrl.beerAndBrewery);
 app.get('/api/favorites/:id', favoritesCntrl.getFavorites);
 app.post('/api/favorites', favoritesCntrl.addFavorite);
 app.delete('/api/favorites/:id', favoritesCntrl.deleteFavorite);
+
+app.get('/api/reviews/:id', reviewsCntrl.getReviews);
+app.post('/api/review', reviewsCntrl.addReview);
+app.delete('/api/review/:id', reviewsCntrl.deleteReview);
+app.put('/api/review/:id', reviewsCntrl.editReview);
 
 app.listen(port, () => console.log(`Local Brew up and running on ${port}`))
