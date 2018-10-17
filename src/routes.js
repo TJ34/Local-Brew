@@ -6,6 +6,7 @@ import Beers from './views/Beers/Beers';
 import Brewery from './views/Brewery/Brewery';
 import Beer from './views/Beer/Beer';
 import Favorites from './views/Favorites/Favorites';
+import Chat from './views/Chat/Chat';
 
 export default (
     <Switch>
@@ -15,5 +16,6 @@ export default (
         <Route path = '/breweries' component = {Breweries}/>
         <Route path = '/beers' component = {Beers}/>
         <Route path = '/favorites' component = {Favorites}/>
+        <Route path = '/chat' component = {Chat} />
     </Switch>
 )

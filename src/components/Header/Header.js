@@ -23,7 +23,12 @@ class Header extends Component {
                     <Link to="/"><button className="navButtons">Home</button></Link>
                     <Link to="/breweries"><button className="navButtons">Breweries</button></Link>
                     <Link to="/beers"><button className="navButtons">Beers</button></Link>
-                    {this.props.user.isAuthed ? (<Link to="/favorites"><button className="navButtons">Favorites</button></Link>):null}
+                    {this.props.user.isAuthed ? (
+                        <Link to="/favorites"><button className="navButtons">Favorites</button></Link>
+                        ):null}
+                    {this.props.user.isAuthed ? (
+                        <Link to="/chat"><button className="navButtons">Chat</button></Link>
+                        ):null}
                 </nav>
             </div>
         </div>

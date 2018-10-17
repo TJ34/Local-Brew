@@ -7,6 +7,8 @@ const {json} = require("body-parser");
 const passport = require("passport");
 const session = require("express-session");
 const cors = require("cors");
+const port2 = process.env.PORT || 3002;
+const io = require('socket.io')();
 
 const breweryCntrl = require(`${__dirname}/controllers/breweryCntrl`);
 const {strat, logout} = require(`${__dirname}/controllers/strategy`);
@@ -89,5 +91,14 @@ app.get('/api/reviews/:id', reviewsCntrl.getReviews);
 app.post('/api/review', reviewsCntrl.addReview);
 app.delete('/api/review/:id', reviewsCntrl.deleteReview);
 app.put('/api/review/:id', reviewsCntrl.editReview);
+
+io.on('connection', (socket) => {
+    socket.on('SEND_MESSAGE', function(data){
+        io.emit('RECEIVE_MESSAGE', data);
+    })
+})
+
+io.listen(port2);
+console.log('listening on port ', port2);
 
 app.listen(port, () => console.log(`Local Brew up and running on ${port}`))
