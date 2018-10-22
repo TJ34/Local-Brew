@@ -26,29 +26,34 @@ class Beers extends Component {
         axios.post('/api/favorites', {beer_name, beer_label, beer_desc, abv, style, brewery, user_id, beer_id})
     }
 
+
     render(){
         let allBeers = this.state.beers.filter((beer, i) => {
             return beer.beer_name.includes(this.state.searchInput) || beer.brewery.includes(this.state.searchInput);
         }).map((beer, i) => {
             return (
-                <div key={i} className="beerCards">
-                  <FontAwesomeIcon 
-                            icon={['far', 'heart']} 
-                            className="heartIcon"
-                            onClick={() => this.addToFavorites(beer.beer_name, beer.beer_label, beer.beer_desc, beer.abv, beer.style, beer.brewery, this.props.user.user.data.id, beer.id)}
-                    />
-                    <Link 
-                        to={`/breweries/brewery/beer/${beer.id}`}
-                            className="card">  
-                            <p>{beer.beer_name}</p>
-                    </Link>
-                </div>
+                    <div key={i} className="beerCards">
+                        {this.props.user.isAuthed ? (
+                            <FontAwesomeIcon 
+                                        icon={['far', 'heart']} 
+                                        className="heartIcon"
+                                        onClick={() => this.addToFavorites(beer.beer_name, beer.beer_label, beer.beer_desc, beer.abv, beer.style, beer.brewery, this.props.user.user.data.id, beer.id)}
+                            />
+                        ):null}
+                        <Link 
+                            to={`/breweries/brewery/beer/${beer.id}`}
+                            className="card"
+                        >
+                            <img className="labelImage" src={beer.beer_label} />
+                            <p className="beerName">{beer.beer_name}</p>
+                        </Link>
+                    </div>
             )
         })
 
         return <div>
             <Header />
-            <div> Search: <input placeholder="Beer or Brewery Name" onChange={(e) => this.setState({searchInput: (e.target.value)})}/></div>
+            <div className="searchBox"><input placeholder="Enter Beer or Brewery Name" onChange={(e) => this.setState({searchInput: (e.target.value)})} className="beerInput"/></div>
             <div className="beersList">
                 {allBeers}
             </div>

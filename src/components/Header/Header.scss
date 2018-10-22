@@ -10,37 +10,35 @@ $secondary: #424B54;
     padding: 0 30px;
     background-color: $primary-color;
 
-    .rightNav{
+    .hamburger {
+        font-size: 2em;
+        cursor: pointer;
+    }
+}
+
+.dropdown {
+    display: flex;
+    justify-content: flex-end;
+
+    .menu {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
         align-items: flex-end;
-        height: 14vh;
-
-            .logInOut {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                margin-top: .5vh;
-                padding: 5px;
-                border-radius: 5px;
-                height: 2vw;
-                width: 4vw;
-                font-size: 15px;
-                font-weight: bold;
-                border: 1px solid black;
-                color: $secondary;
-            }
+        height: auto;
+        width: auto;
+        background-color: #424B54;
+        z-index: 3;
+        position: absolute;
+        border-bottom-left-radius: 10px;
     
-            .navButtons{
-                margin: 0 0 .1vh 3vw;
-                font-size: 25px;
-                font-weight: bold;
-                background-color: $primary-color;
-                border: none;
-                cursor: pointer;
-            }  
+        .navButtons{
+            margin: 10px;
+            font-size: 1.5em;
+            font-weight: bold;
+            background-color: #424B54;
+            color: $primary-color;
+            border: none;
+            cursor: pointer;
+        }  
     }
-
-    
 }

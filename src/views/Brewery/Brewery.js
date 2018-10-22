@@ -38,14 +38,17 @@ class Brewery extends Component {
         let beerList = brewery_info.map((beer, i) => {
             return (
                 <div className="outerDiv" key={i}>
-                    <FontAwesomeIcon 
-                            icon={['far', 'heart']} 
-                            className="heartIcon"
-                            onClick={() => this.addToFavorites(beer.beer_name, beer.beer_label, beer.beer_desc, beer.abv, beer.style, beer.brewery, this.props.user.user.data.id, beer.id)}
-                    />
+                    {this.props.user.isAuthed ? (
+                        <FontAwesomeIcon 
+                                    icon={['far', 'heart']} 
+                                    className="heartIcon"
+                                    onClick={() => this.addToFavorites(beer.beer_name, beer.beer_label, beer.beer_desc, beer.abv, beer.style, beer.brewery, this.props.user.user.data.id, beer.id)}
+                        />
+                    ):null}
                     <Link 
                         to={`/breweries/brewery/beer/${beer.id}`}  className="beerCard">  
-                            <p>{beer.beer_name}</p>
+                            <img className="labelImage" src={beer.beer_label} />
+                            <p className="beerName">{beer.beer_name}</p>
                     </Link>
                 </div>
             )

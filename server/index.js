@@ -91,6 +91,7 @@ app.get('/api/reviews/:id', reviewsCntrl.getReviews);
 app.post('/api/review', reviewsCntrl.addReview);
 app.delete('/api/review/:id', reviewsCntrl.deleteReview);
 app.put('/api/review/:id', reviewsCntrl.editReview);
+app.get('/api/rating/:id', reviewsCntrl.getStarRating);
 
 io.on('connection', (socket) => {
     socket.on('SEND_MESSAGE', function(data){

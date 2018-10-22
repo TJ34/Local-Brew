@@ -45,7 +45,40 @@
 
 .modal1 {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
+    height: 100%;
+
+    .modalHeader {
+        font-size: 1.25em;
+    }
+
+    .nameStar {
+        display: flex;
+        flex-direction: row;
+        margin: 5px;
+        width: 70%;
+
+        .starRating1 {
+            letter-spacing: 4px;
+            margin-left: 2em;
+        }
+    }
+
+    .modalInput {
+        width: 70%;
+        height: 60%;
+        font-size: 1em;
+    
+    }
+
+    .submitButton {
+        align-self: flex-end;
+        margin: 1em 15%;
+        background-color: #435058;
+        border-radius: 5px;
+        color: white;
+    }
 }
 

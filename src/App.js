@@ -4,11 +4,11 @@ import {BrowserRouter} from 'react-router-dom';
 import routes from './routes';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { far } from '@fortawesome/free-regular-svg-icons';
-import { faBeer, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faBeer, faHeart, faBars } from '@fortawesome/free-solid-svg-icons';
 import {Provider} from 'react-redux';
 import store from './ducks/store';
 
-library.add(faBeer, far, faHeart)
+library.add(faBeer, far, faHeart, faBars)
 
 class App extends Component {
   render() {

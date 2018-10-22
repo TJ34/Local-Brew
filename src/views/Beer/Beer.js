@@ -19,6 +19,8 @@ class Beer extends Component {
             review: '',
             rating: 0,
             editId: 0,
+            avgRating: 0,
+            dummy: 0
          }
         }
 
@@ -28,6 +30,9 @@ class Beer extends Component {
         });
         axios.get(`/api/reviews/${+this.props.match.params.id}`).then(response => {
             this.setState({allReviews: response.data});
+        });
+        axios.get(`/api/rating/${+this.props.match.params.id}`).then(response => {
+            this.setState({avgRating: response.data[0].round})
         })
     }
 
@@ -49,7 +54,8 @@ class Beer extends Component {
     }
 
     render(){
-        const {beer, rating, review} = this.state;
+        console.log(this.state.avgRating);
+        const {beer, rating, review, avgRating, dummy} = this.state;
         let reviewList = this.state.allReviews.map((review, i) => {
             return (
                 <div key={i} className="reviewCard">
@@ -63,14 +69,19 @@ class Beer extends Component {
                                 contentLabel="Editing Form"
                                 shouldCloseOnEsc={true}
                             >
-                                <p>{review.username}</p>
-                                <StarRatingComponent
-                                    name="rate3"
-                                    value={this.state.rating}
-                                    onStarClick={(nextValue) => {this.setState({rating: nextValue})}}
-                                />
-                                <input onChange={(e) => this.setState({review: e.target.value})} value={this.state.review}/>
-                                <button onClick={() => this.editReview(this.state.editId, this.state.review, this.state.rating)}>Submit</button>
+                            <div className="modal1">
+                                    <h1 className="modalHeader">{this.state.beer.beer_name} Review</h1>
+                                    <div className="nameStar">
+                                        <p>{review.username}</p>
+                                        <StarRatingComponent
+                                            name="rate3"
+                                            value={this.state.rating}
+                                            onStarClick={(nextValue) => {this.setState({rating: nextValue})}}
+                                        />
+                                    </div>
+                                    <textarea onChange={(e) => this.setState({review: e.target.value})} value={this.state.review} className="modalInput"/>
+                                    <button onClick={() => this.editReview(this.state.editId, this.state.review, this.state.rating)} className="submitButton">Submit</button>
+                            </div>
                             </ReactModal>
                             <button onClick={() => this.deleteReview(review.id)}>Delete</button>
                         </div>
@@ -99,6 +110,11 @@ class Beer extends Component {
                     <h1>{beer.beer_name}</h1>
                     <p>{beer.abv}% - {beer.style}</p>
                     <p>{beer.beer_desc}</p>
+                    <StarRatingComponent
+                        name="rate4"
+                        editing={false}
+                        value={+avgRating}
+                    />
                 </div>
             </div>
             <div className="reviewsContainer">
@@ -123,8 +139,8 @@ class Beer extends Component {
                                 content: {
                                   position: 'absolute',
                                   top: '30%',
-                                  left: '30%',
-                                  right: '30%',
+                                  left: '20%',
+                                  right: '20%',
                                   bottom: '30%',
                                   border: '4px solid black',
                                   background: '#fff',
@@ -137,17 +153,19 @@ class Beer extends Component {
                               }}
                         >
                         <div className="modal1">
-                        <h1>{this.state.beer.beer_name} Review</h1>
-                        <div>
-                            {this.props.user.user.data.username}
-                            <StarRatingComponent
-                            name="rate1"
-                            value={rating}
-                            onStarClick={(nextValue) => {this.setState({rating: nextValue})}}
-                            />
-                        </div>
-                        <input onChange={(e) => this.setState({review: e.target.value})}/>
-                        <button onClick={() => this.submitReviewCloseModal(review, rating, this.props.user.user.data.id, this.props.match.params.id, this.props.user.user.data.username)}>Submit</button>
+                            <h1 className="modalHeader">{this.state.beer.beer_name} Review</h1>
+                            <div className="nameStar">
+                                {this.props.user.user.data.username}
+                                <StarRatingComponent
+                                name="rate1"
+                                value={rating || dummy}
+                                onStarClick={(nextValue) => {this.setState({rating: nextValue})}}
+                                onStarHover={(nextValue) => {this.setState({dummy: nextValue})}}
+                                className="starRating1"
+                                />
+                            </div>
+                            <textarea onChange={(e) => this.setState({review: e.target.value})} className="modalInput"/>
+                            <button onClick={() => this.submitReviewCloseModal(review, rating, this.props.user.user.data.id, this.props.match.params.id, this.props.user.user.data.username)} className="submitButton">Submit</button>
                         </div>
                         </ReactModal>
                     </div>

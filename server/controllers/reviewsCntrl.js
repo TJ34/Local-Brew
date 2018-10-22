@@ -25,5 +25,11 @@ module.exports = {
         db.reviews.edit_review([id, review, star_rating]).then(reviews => {
             return res.status(200).json(reviews);
         })
+    },
+    getStarRating(req,res){
+        let db=req.app.get('db');
+        db.reviews.avg_rating(req.params.id).then(rating => {
+            return res.status(200).json(rating);
+        })
     }
 }

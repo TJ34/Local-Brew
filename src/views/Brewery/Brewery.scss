@@ -75,6 +75,23 @@
             text-decoration: none;
             z-index: 0;
             cursor: pointer, auto;
+
+            .labelImage {
+                height: 190px;
+                width: 170px;
+                border-radius: 10%;
+                display: none;
+            }
+        }
+
+        .beerCard:hover {
+            .labelImage {
+                display: unset;
+            }
+
+            .beerName {
+                display: none;
+            }
         }
     
         .heartIcon {
@@ -85,6 +102,7 @@
             top: 10px;
             cursor: pointer;
         }
+
     }
 
     

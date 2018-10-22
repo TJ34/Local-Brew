@@ -1,12 +1,32 @@
+.searchBox {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    font-size: 2em;
+
+    .beerInput {
+        height: 40px;
+        width: 250px;
+        border: 4px inset lightgray;
+        text-align: center;
+    }
+
+    .beerInput::placeholder {
+        font-size: 1.5em;
+    }
+}
+
 .beersList {
     display: flex;
     flex-wrap: wrap;
+    margin: 0px auto;
 
     .beerCards {
         position: relative;
         margin: 40px auto;
 
         .card {
+            margin: 0 30px;
             height: 200px;
             width: 200px;
             border: 3px solid black;
@@ -22,6 +42,23 @@
             text-decoration: none;
             z-index: 0;
             cursor: pointer, auto;
+
+            .labelImage {
+                height: 190px;
+                width: 170px;
+                border-radius: 10%;
+                display: none;
+            }
+        }
+
+        .card:hover {
+            .labelImage {
+                display: unset;
+            }
+
+            .beerName {
+                display: none;
+            }
         }
 
         .heartIcon {
