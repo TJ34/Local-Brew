@@ -12,6 +12,12 @@
     }
 }
 
+.backArrow {
+    margin: 20px 0 0 20px;;
+    font-size: 2em;
+    cursor: pointer;
+}
+
 .beerInfo {
     display: flex;
 
@@ -22,10 +28,26 @@
      }
 
      .stats {
-         margin: 4vw 6vw;
+         margin: 4vw 0 4vw 6vw;
          line-height: 30px;
          font-size: 20px;
          letter-spacing: 1px;
+
+         .cervezaName {
+            border-bottom: 2px solid black;
+            font-size: 1.5em;
+         }
+         .beerDescription {
+             padding-right: 20px;
+         }
+
+         .abvStyle {
+             font-weight: bold;
+         }
+
+         .rate4 {
+             letter-spacing: 3px;
+         }
      }
 }
 
@@ -79,6 +101,35 @@
         background-color: #435058;
         border-radius: 5px;
         color: white;
+    }
+}
+
+.reviewCard {
+    display: flex;
+    align-items: flex-start;
+    height: 4.5em;
+    border-bottom: 2px solid black;
+    margin-right: 15vw;
+    padding-left: 10vw;
+    
+    .reviewerName {
+        font-size: 1.25em;
+        margin-right: 2vw;
+    }
+    
+    .starsReview {
+        border-left: 2px solid black;
+        height: 3em;
+        padding-left: 2vw;
+        width: 80%;
+
+        .rate2 {
+            letter-spacing: .2em;
+        }
+
+        .reviewText {
+            letter-spacing: 1px;
+        }
     }
 }
 

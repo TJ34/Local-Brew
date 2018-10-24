@@ -1,9 +1,25 @@
-.home {
-    background-color: #FCFAFA;
-    height: 77vh;
-    border-bottom: 5vh solid #404E5C;
+.background {
     background-image: url(https://s3-us-west-1.amazonaws.com/local-brew1/mnm-all-552510-unsplash.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+
+    .home {
+        height: 77vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        .homeText {
+            font-size: 5em;
+            font-family: 'Rock Salt', Helvetica;
+        }
+    }
+
+    .footer {
+        height: 7vh;
+        background-color: #424B54;
+    }
 }
+
+

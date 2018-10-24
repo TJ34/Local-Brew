@@ -43,7 +43,6 @@ class Favorites extends Component {
                 </div>
             )
         })
-        console.log(this.state)
         return( 
         <div>
             <Header />

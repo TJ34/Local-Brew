@@ -10,20 +10,29 @@ class Header extends Component {
         super();
 
         this.state = {
+            isMounted: false,
             showMenu: false
         }
     }
 
+    componentDidMount(){
+        this.setState({isMounted: true});
+    }
+
+    componentWillUnmount(){
+        this.setState({isMounted: false});
+    }
+
     showMenu = () => {
-        this.setState({showMenu: true}, () => {
+        if(this.state.isMounted){this.setState({showMenu: true}, () => {
             document.addEventListener('click', this.closeMenu);
-        })
+        })}
     }
 
     closeMenu = () => {
-        this.setState({showMenu: false}, () => {
+        if(this.state.isMounted){this.setState({showMenu: false}, () => {
             document.removeEventListener('click', this.closeMenu);
-        })
+        })}
     }
 
     render(){

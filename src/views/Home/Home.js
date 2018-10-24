@@ -11,12 +11,17 @@ class Home extends Component {
     }
 
     render(){
-        console.log(this.props);
-        return <div>
+        return (
+        <div className="background">
             <Header />
-            <div className="home"></div>
+            <div className="home">
+                <p className="homeText">
+                    Local Brew
+                </p>
+            </div>
+            <div className="footer"></div>
         </div>
-    }
+        )}
 }
 
 const mapStateToProps = state => state;

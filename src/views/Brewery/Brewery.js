@@ -19,18 +19,30 @@ class Brewery extends Component {
                 lat: null,
                 lng: null
             },
-          zoom: 11
+          zoom: 11,
+          favorites: []
         };
       }
       
     componentDidMount(){
         axios.get(`/api/bandb/${+this.props.match.params.id}`).then(response => {
             this.setState({brewery_info: response.data, center: {lat: +response.data[0].lat, lng: +response.data[0].long}});
-        })
+        });
+        if(this.props.user.isAuthed){
+            axios.get(`/api/favorites/${this.props.user.user.data.id}`).then(response => {
+                this.setState({favorites: response.data.map(obj => obj.beer_id)});
+            })
+        }
     }
 
+    getFavorites = () => {
+        axios.get(`/api/favorites/${this.props.user.user.data.id}`).then(response => {
+            console.log(response)
+            this.setState({favorites: response.data.map(obj => obj.beer_id)});
+    })}
+
     addToFavorites = (beer_name, beer_label, beer_desc, abv, style, brewery, user_id, beer_id) => {
-        axios.post('/api/favorites', {beer_name, beer_label, beer_desc, abv, style, brewery, user_id, beer_id})
+        axios.post('/api/favorites', {beer_name, beer_label, beer_desc, abv, style, brewery, user_id, beer_id}).then(() => this.getFavorites());
     }
 
     render(){
@@ -39,15 +51,19 @@ class Brewery extends Component {
             return (
                 <div className="outerDiv" key={i}>
                     {this.props.user.isAuthed ? (
+                        this.state.favorites.includes(beer.id) ?
                         <FontAwesomeIcon 
-                                    icon={['far', 'heart']} 
-                                    className="heartIcon"
-                                    onClick={() => this.addToFavorites(beer.beer_name, beer.beer_label, beer.beer_desc, beer.abv, beer.style, beer.brewery, this.props.user.user.data.id, beer.id)}
-                        />
+                            icon="heart" 
+                            className="heartIcon"/>
+                        
+                        : <FontAwesomeIcon 
+                            icon={['far', 'heart']} 
+                            className="heartIcon"
+                            onClick={() => this.addToFavorites(beer.beer_name, beer.beer_label, beer.beer_desc, beer.abv, beer.style, beer.brewery, this.props.user.user.data.id, beer.id)}/> 
                     ):null}
                     <Link 
                         to={`/breweries/brewery/beer/${beer.id}`}  className="beerCard">  
-                            <img className="labelImage" src={beer.beer_label} />
+                            <img className="labelImage" src={beer.beer_label} alt="Not Available"/>
                             <p className="beerName">{beer.beer_name}</p>
                     </Link>
                 </div>
