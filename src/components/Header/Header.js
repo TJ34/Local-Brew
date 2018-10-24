@@ -46,10 +46,10 @@ class Header extends Component {
                 {this.state.showMenu ? (
                     <div className="menu">
                         {!this.props.user.isAuthed ? 
-                            (<a href={process.env.REACT_APP_LOGIN}>
+                            (<a href={process.env.REACT_APP_LOGIN} className="logInOut">
                                 <div className="navButtons">Login</div>
                             </a>):
-                            (<a href={process.env.REACT_APP_LOGOUT}>
+                            (<a href={process.env.REACT_APP_LOGOUT} className="logInOut">
                                 <div className="navButtons">Logout</div>
                             </a>)}
                         <Link to="/"><button className="navButtons">Home</button></Link>

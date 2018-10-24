@@ -35,10 +35,12 @@ class Favorites extends Component {
                       to={`/breweries/brewery/beer/${fav.beer_id}`}
                       className="favCard"
                     >
-                        <img src={fav.beer_label} alt="Not Available"/>
-                        <p>{fav.beer_name}</p>
-                        <p>{fav.brewery}</p>
-                        <p>{fav.abv} - {fav.style}</p>
+                        <img src={fav.beer_label} alt="Not Available" className="favImage"/>
+                        <div className="infoDiv">
+                            <p className="favBeerName">{fav.beer_name}</p>
+                            <p className="favBrewery">{fav.brewery}</p>
+                            <p className="favStats">ABV {fav.abv}% - {fav.style}</p>
+                        </div>
                     </Link>
                 </div>
             )
@@ -46,7 +48,7 @@ class Favorites extends Component {
         return( 
         <div>
             <Header />
-            <h1>Favorites List</h1>
+            <h1 className="favsHeader">Favorites List</h1>
             <div className="favsList">
                 {favsList}
             </div>

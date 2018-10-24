@@ -1,3 +1,7 @@
+.beersBackground {
+    background-color: #C0C5C1;
+}
+
 .searchBox {
     margin-top: 20px;
     display: flex;
@@ -26,10 +30,12 @@
         margin: 40px auto;
 
         .card {
+            position: relative;
             margin: 0 30px;
             height: 200px;
             width: 200px;
-            border: 3px solid black;
+            perspective: 400px;
+            border: 1px solid black;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -37,27 +43,42 @@
             font-size: 35px;
             text-align: center;
             border-radius: 10%;
-            background-color: #FCFAFA;
+            background-color: #0A0908;
             color: black;
             text-decoration: none;
             z-index: 0;
             cursor: pointer, auto;
+            box-shadow: 10px 9px 4px rgba(71,71,71,1);
+
+            .beerName, .labelImage {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                transition: transform 1s;
+                backface-visibility: hidden;
+            }
+
+            .beerName {
+                background-color: #FCFAFA;
+                border-radius: 10%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
 
             .labelImage {
-                height: 190px;
-                width: 170px;
                 border-radius: 10%;
-                display: none;
+                transform: rotateY(180deg);
             }
         }
 
         .card:hover {
             .labelImage {
-                display: unset;
+                transform: rotateY(360deg)
             }
 
             .beerName {
-                display: none;
+                transform: rotateY(180deg);
             }
         }
 

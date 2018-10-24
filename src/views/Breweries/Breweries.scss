@@ -22,40 +22,42 @@
 
 .brewList{
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     width: auto;
 
     .brewCard{
         display: flex;
-        align-items: center;
-        margin: 20px auto;
+        margin: 3vw 5vw;
         border: 3px solid #424B54;
         height: auto;
-        width: 350px;
+        width: 380px;
         min-width: 290px;
         padding: 1vw 2vw;
         @include rounded;
         box-shadow: 8px 8px 7px #888888;
         cursor: pointer, auto;
-    
-        .brewLogo {
-            height: 85px;
-            width: 85px;
-        }
-        
-        .brewInfo {
-            flex-direction: column;
-            margin-left: 2vw;
-            line-height: 20px;
-            letter-spacing: 2px;
-            color: black;
+        text-decoration: none;
 
-            .brewName {
-                font-size: 20px;
-                font-weight: bold;
-                margin-bottom: 6px;
+            .brewLogo {
+                height: 85px;
+                width: 85px;
             }
-        }
+            
+            .brewInfo {
+                flex-direction: column;
+                margin-left: 2vw;
+                line-height: 20px;
+                letter-spacing: 1px;
+                color: black;
+                
+    
+                .brewName {
+                    font-size: 20px;
+                    font-weight: bold;
+                    margin-bottom: 6px;
+                }
+            }    
     }
 }
 

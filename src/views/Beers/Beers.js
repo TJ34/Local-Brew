@@ -31,7 +31,6 @@ class Beers extends Component {
 
     getFavorites = () => {
         axios.get(`/api/favorites/${this.props.user.user.data.id}`).then(response => {
-            console.log(response)
             this.setState({favorites: response.data.map(obj => obj.beer_id)});
     })}
 
@@ -64,14 +63,14 @@ class Beers extends Component {
                             className="card"
                         >
                             <img className="labelImage" src={beer.beer_label} alt="Not Available"/>
-                            <p className="beerName">{beer.beer_name}</p>
+                            <div className="beerName"><p>{beer.beer_name}</p></div>
                         </Link>
                     </div>
             )
         })
 
         return(
-            <div>
+            <div className="beersBackground">
                 <Header />
                 <div className="searchBox"><input placeholder="Enter Beer or Brewery Name" onChange={(e) => this.setState({searchInput: (e.target.value)})} className="beerInput"/></div>
                 <div className="beersList">

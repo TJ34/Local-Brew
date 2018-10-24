@@ -3,28 +3,30 @@
     justify-content: center;
     align-items: center;
     height: 6vh;
-    font-size: 45px;
+    font-size: 3em;
     font-weight: bold;
     margin: 20px;
+    text-align: center;
 }
+
+
 
 .topHalf{
 
     display: flex;
     justify-content: space-between;
+    margin-bottom: 6vh;
 
     .logoDesc {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 60vh;
     width: 45%;
-    margin: 3vw 0 0 4vw;
 
         .logo{
-            height: 325px;
-            width: 325px;
-            margin: 0 40px;
+            height: 11em;
+            width: 12em;
+            margin: 40px 0 0 100px; 
         }
     }
 
@@ -33,9 +35,9 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        height: 60vh;
+        height: 100%;
         width: 45%;
-        margin: 4vw 3vw 0 3vw;
+        margin: 60px 40px 0 0;
 
         .brewMap {
             height: 50vh;
@@ -49,48 +51,98 @@
     }
 }
 
+@media (max-width: 540px){
+    .nameHeader {
+        font-size: 1.5em;
+        margin: 20px 0;
+    }
+
+    .topHalf {
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+
+        .logoDesc {
+            margin: 0px;
+
+            .logo {
+                margin: 10px;
+                height: 40vh;
+                width: 40vh;
+            }
+        }
+
+        .mapAddress {
+            height: 30vh;
+            margin: 20px;
+            width: 80%;
+            
+            .brewMap {
+                height: 100%;
+                width: 80%;
+            }
+        }
+    }   
+}
+
 
 .brList {
     display: flex;
     flex-wrap: wrap;
-    // position: relative;
 
     .outerDiv {
         position: relative;
         margin: 40px auto;
 
         .beerCard {
+            position: relative;
             height: 200px;
             width: 200px;
-            border: 3px solid black;
+            margin: 0 3vw;
+            border: 1px solid black;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             font-size: 35px;
             text-align: center;
-            border-radius: 5%;
-            background-color: #FCFAFA;
-            color: black;
+            border-radius: 10%;
+            background-color: #0A0908;
             text-decoration: none;
             z-index: 0;
             cursor: pointer, auto;
+            box-shadow: 10px 9px 4px rgba(71,71,71,1);
+
+            .beerName, .labelImage {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                transition: transform 1s;
+                backface-visibility: hidden;
+            }
+
+            .beerName {
+                background-color: #FCFAFA;
+                color: black;
+                border-radius: 10%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
 
             .labelImage {
-                height: 190px;
-                width: 170px;
                 border-radius: 10%;
-                display: none;
+                transform: rotateY(180deg);
             }
         }
 
         .beerCard:hover {
             .labelImage {
-                display: unset;
+                transform: rotateY(360deg)
             }
 
             .beerName {
-                display: none;
+                transform: rotateY(180deg);
             }
         }
     

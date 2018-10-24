@@ -19,6 +19,7 @@ $secondary: #424B54;
 .dropdown {
     display: flex;
     justify-content: flex-end;
+    text-decoration: none;
 
     .menu {
         display: flex;
@@ -30,6 +31,10 @@ $secondary: #424B54;
         z-index: 3;
         position: absolute;
         border-bottom-left-radius: 10px;
+
+        .logInOut {
+            text-decoration: none;
+        }
     
         .navButtons{
             margin: 10px;

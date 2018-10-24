@@ -82,20 +82,20 @@ class Brewery extends Component {
                 </div>
                 <div className="mapAddress">
                     <div className="brewMap">
-                    <GoogleMapReact
-                        bootstrapURLKeys={{key: google_key}}
-                        center={this.state.center}
-                        defaultZoom={this.state.zoom} 
-                    >
-                    <Brew  
-                        lat={brewery_info[0] && brewery_info[0].lat}
-                        lng={brewery_info[0] && brewery_info[0].long}
-                        text={<FontAwesomeIcon icon="beer" className="brewIcon"/>}
-                    />
-                    </GoogleMapReact>
+                        <GoogleMapReact
+                            bootstrapURLKeys={{key: google_key}}
+                            center={this.state.center}
+                            defaultZoom={this.state.zoom} 
+                        >
+                            <Brew  
+                                lat={brewery_info[0] && brewery_info[0].lat}
+                                lng={brewery_info[0] && brewery_info[0].long}
+                                text={<FontAwesomeIcon icon="beer" className="brewIcon"/>}
+                            />
+                        </GoogleMapReact>
                     </div>
                     <p>{brewery_info[0] && brewery_info[0].brewery_address}</p>
-                    <p>{brewery_info[0] && brewery_info[0].brewery_city}, {brewery_info.brewery_state}</p>
+                    <p>{brewery_info[0] && brewery_info[0].brewery_city}, {brewery_info[0] && brewery_info[0].brewery_state} {brewery_info[0] && brewery_info[0].brewery_zip}</p>
                 </div>
               </div>
               <div className="brList">

@@ -22,8 +22,8 @@ class Beer extends Component {
             editId: 0,
             avgRating: 0,
             dummy: 0
-         }
         }
+    }
 
     componentDidMount(){
         axios.get(`/api/beer/${+this.props.match.params.id}`).then(response => {
@@ -60,45 +60,44 @@ class Beer extends Component {
     }
 
     render(){
-        console.log(this.state.allReviews);
         const {beer, rating, review, avgRating, dummy} = this.state;
 
         let reviewList = this.state.allReviews.map((review, i) => {
             return (
                 <div key={i} className="reviewCard">
-                    <div>
+                    <div className="nameEditDelete">
                         <p className="reviewerName">{review.username}</p>
                         {this.props.user.isAuthed && this.props.user.user.data.id === review.user_id ? (
                         <div>
-                            <button onClick={() => this.setState({showModal2: true, rating: +review.star_rating, review: review.review, editId: review.id})}>Edit</button>
+                            <button onClick={() => this.setState({showModal2: true, rating: +review.star_rating, review: review.review, editId: review.id})} className="putDelete">Edit</button>
                             <ReactModal
                                 isOpen={this.state.showModal2}
                                 contentLabel="Editing Form"
                                 shouldCloseOnEsc={true}
                                 style={{
                                     overlay: {
-                                      position: 'fixed',
-                                      top: 0,
-                                      left: 0,
-                                      right: 0,
-                                      bottom: 0,
-                                      backgroundColor: 'rgba(255, 255, 255, 0.75)'
+                                        position: 'fixed',
+                                        top: 0,
+                                        left: 0,
+                                        right: 0,
+                                        bottom: 0,
+                                        backgroundColor: 'rgba(255, 255, 255, 0.75)'
                                     },
                                     content: {
-                                      position: 'absolute',
-                                      top: '30%',
-                                      left: '20%',
-                                      right: '20%',
-                                      bottom: '30%',
-                                      border: '4px solid black',
-                                      background: '#fff',
-                                      overflow: 'auto',
-                                      WebkitOverflowScrolling: 'touch',
-                                      borderRadius: '4px',
-                                      outline: 'none',
-                                      padding: '20px'
+                                        position: 'absolute',
+                                        top: '30%',
+                                        left: '20%',
+                                        right: '20%',
+                                        bottom: '30%',
+                                        border: '4px solid black',
+                                        background: '#fff',
+                                        overflow: 'auto',
+                                        WebkitOverflowScrolling: 'touch',
+                                        borderRadius: '4px',
+                                        outline: 'none',
+                                        padding: '20px'
                                     }
-                                  }}
+                                }}
                             >
                             <div className="modal1">
                                     <h1 className="modalHeader">{this.state.beer.beer_name} Review</h1>
@@ -114,7 +113,7 @@ class Beer extends Component {
                                     <button onClick={() => this.editReview(this.state.editId, this.state.review, this.state.rating)} className="submitButton">Submit</button>
                             </div>
                             </ReactModal>
-                            <button onClick={() => this.deleteReview(review.id)}>Delete</button>
+                            <button onClick={() => this.deleteReview(review.id)} className="putDelete">Delete</button>
                         </div>
                         ):null}
                     </div>
@@ -135,7 +134,9 @@ class Beer extends Component {
         <div>
             <div className="beerHeader">
                 <img src={beer.brew_logo} className="headerImage" alt="Not Available"/>
-                <Logo />
+                <div className="bpLogo">
+                    <Logo />
+                </div>
             </div>
             <FontAwesomeIcon icon={['far', 'arrow-alt-circle-left']} onClick={() => this.props.history.goBack()} className="backArrow"/>
             <div className="beerInfo">
@@ -164,28 +165,28 @@ class Beer extends Component {
                             shouldCloseOnEsc={true}
                             style={{
                                 overlay: {
-                                  position: 'fixed',
-                                  top: 0,
-                                  left: 0,
-                                  right: 0,
-                                  bottom: 0,
-                                  backgroundColor: 'rgba(255, 255, 255, 0.75)'
+                                    position: 'fixed',
+                                    top: 0,
+                                    left: 0,
+                                    right: 0,
+                                    bottom: 0,
+                                    backgroundColor: 'rgba(255, 255, 255, 0.75)'
                                 },
                                 content: {
-                                  position: 'absolute',
-                                  top: '30%',
-                                  left: '20%',
-                                  right: '20%',
-                                  bottom: '30%',
-                                  border: '4px solid black',
-                                  background: '#fff',
-                                  overflow: 'auto',
-                                  WebkitOverflowScrolling: 'touch',
-                                  borderRadius: '4px',
-                                  outline: 'none',
-                                  padding: '20px'
+                                    position: 'absolute',
+                                    top: '30%',
+                                    left: '20%',
+                                    right: '20%',
+                                    bottom: '30%',
+                                    border: '4px solid black',
+                                    background: '#fff',
+                                    overflow: 'auto',
+                                    WebkitOverflowScrolling: 'touch',
+                                    borderRadius: '4px',
+                                    outline: 'none',
+                                    padding: '20px'
                                 }
-                              }}
+                            }}
                         >
                         <div className="modal1">
                             <h1 className="modalHeader">{this.state.beer.beer_name} Review</h1>

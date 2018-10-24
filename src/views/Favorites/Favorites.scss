@@ -1,3 +1,9 @@
+.favsHeader {
+    text-align: center;
+    margin: 10px;
+    font-size: 2.5em;
+}
+
 .favsList {
     display: flex;
     flex-wrap: wrap;
@@ -20,11 +26,35 @@
         width: 250px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-around;
         align-items: center;
         text-decoration: none;
         z-index: 0;
         border: 2px solid black;
         cursor: -webkit-grab;
+        border-radius: 10px;
+
+        .favImage {
+            width: 200px;
+            height: 235px;
+        }
+
+        .infoDiv {
+            border-top: 2px solid black;
+            width: 100%;
+            color: black;
+
+            .favBeerName {
+
+            }
+
+            .favBrewery {
+
+            }
+
+            .favStats {
+
+            }
+        }
     }
 }
