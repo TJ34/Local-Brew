@@ -93,9 +93,23 @@ app.delete('/api/review/:id', reviewsCntrl.deleteReview);
 app.put('/api/review/:id', reviewsCntrl.editReview);
 app.get('/api/rating/:id', reviewsCntrl.getStarRating);
 
-io.on('connection', (socket) => {
+
+let users = [];
+
+io.on('connection', function(socket){
+    var newUser;
     socket.on('SEND_MESSAGE', function(data){
         io.emit('RECEIVE_MESSAGE', data);
+    });
+    socket.on('SEND_USER', function(user){
+        newUser = user;
+        if(!users.includes(user)){users.push(user)};
+        io.emit('RECEIVE_USERS', users);
+    });
+    socket.on('disconnect', function(){
+        console.log('disconnected');
+        users.splice(users.indexOf(newUser),1);
+        io.emit('RECEIVE_USERS', users);
     })
 })
 

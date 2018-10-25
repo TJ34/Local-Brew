@@ -16,9 +16,11 @@
     .delButton {
         position: absolute;
         z-index: 2;
-        right: 10px;
         top: 10px;
+        right: 5px;
         cursor: pointer;
+        border: 1px inset gray;
+        // background-color: #3D52D5;
     }
 
     .favCard {
@@ -29,10 +31,13 @@
         justify-content: space-around;
         align-items: center;
         text-decoration: none;
-        z-index: 0;
-        border: 2px solid black;
+        z-index: 0; 
         cursor: -webkit-grab;
-        border-radius: 10px;
+        border: 20px solid #C0C5C1;
+        outline: 2px solid black;
+        -moz-outline-radius: 10px;
+        box-shadow: 5px 5px 3px rgba(71,71,71,1);
+        padding: 2px;
 
         .favImage {
             width: 200px;
@@ -41,11 +46,19 @@
 
         .infoDiv {
             border-top: 2px solid black;
-            width: 100%;
+            width: 97%;
             color: black;
+            padding-left: 10px;
+            line-height: 1.4em;
+            // background-color: #3D52D5;
+            height: 100%;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            margin-top: 10px;
 
             .favBeerName {
-
+                font-weight: 500;
+                font-size: 1.3em;
             }
 
             .favBrewery {

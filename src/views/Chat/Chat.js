@@ -17,9 +17,12 @@ class Chat extends Component {
         this.socket = io('localhost:3002');
 
         this.socket.on('RECEIVE_MESSAGE', function(data){
-            console.log(data);
             addMessage(data);
         });
+
+        this.socket.on('RECEIVE_USERS', function(users){
+            console.log(users);
+        })
 
         const addMessage = data => {
             this.setState({messages: [...this.state.messages, data]})
@@ -36,12 +39,14 @@ class Chat extends Component {
     }
 
     componentDidMount(){
-        this.setState({users: [...this.state.users, this.props.user.user.data.username]})
+        this.socket.emit('SEND_USER',
+            this.props.user.user.data.username
+        )
     }
 
 
     render(){
-        console.log(this.props)
+        console.log(this.state.users)
         return (
             <div>
                 <Header />
