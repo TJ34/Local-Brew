@@ -105,12 +105,24 @@ io.on('connection', function(socket){
         newUser = user;
         if(!users.includes(user)){users.push(user)};
         io.emit('RECEIVE_USERS', users);
+        socket.emit('RECEIVE_MESSAGE', {
+            author: "Server",
+            message: "Welcome!"
+        })
+        socket.broadcast.emit('RECEIVE_MESSAGE', {
+            author: "Server",
+            message: `${user} has joined the room!`
+        })
     });
     socket.on('disconnect', function(){
         console.log('disconnected');
-        users.splice(users.indexOf(newUser),1);
+        let user = users.splice(users.indexOf(newUser),1);
         io.emit('RECEIVE_USERS', users);
-    })
+        socket.broadcast.emit('RECEIVE_MESSAGE', {
+            author: "Server",
+            message: `${user} has left the room.`
+        })
+    });
 })
 
 io.listen(port2);

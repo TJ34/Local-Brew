@@ -21,11 +21,15 @@ class Chat extends Component {
         });
 
         this.socket.on('RECEIVE_USERS', function(users){
-            console.log(users);
-        })
+            addUsers(users);
+        });
 
         const addMessage = data => {
             this.setState({messages: [...this.state.messages, data]})
+        }
+
+        const addUsers = users => {
+            this.setState({users: users})
         }
 
         this.sendMessage = e => {
@@ -57,16 +61,18 @@ class Chat extends Component {
                             return (<div key={i}>{user}</div>);
                         })}
                     </div>
-                    <div className="messages">
-                        {this.state.messages.map((message,i) => {
-                            return (
-                                <div key={i}>{message.author}: {message.message}</div>
-                            )
-                        })}
-                    </div>
-                    <div className="messageInput">
-                        <input  type="text" placeholder="Message" value={this.state.message} onChange={(e) => this.setState({message: e.target.value})}/>
-                        <button onClick={this.sendMessage}>Send</button>
+                    <div className="chatRoom">
+                        <div className="messages">
+                            {this.state.messages.map((message,i) => {
+                                return (
+                                    <div key={i}>{message.author}: {message.message}</div>
+                                )
+                            })}
+                        </div>
+                        <div className="messageInput">
+                            <input  type="text" placeholder="Message" value={this.state.message} onChange={(e) => this.setState({message: e.target.value})}/>
+                            <button onClick={this.sendMessage}>Send</button>
+                        </div>
                     </div>
                 </div>
             </div>
