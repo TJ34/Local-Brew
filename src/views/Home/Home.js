@@ -16,7 +16,6 @@ class Home extends Component {
             <Header />
             <div className="home">
                 <p className="homeText">
-                    Local Brew
                 </p>
             </div>
             <div className="footer"></div>

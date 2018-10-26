@@ -1,64 +1,126 @@
+.chatBackground {
+    height: 100vh;
+    width: 100%;
+    background-color: #86BAA1;
 
-
-.messageView {
-    display: flex;
-    height: 86vh;
-
-    .users {
+    .messageView {
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 25vw;
-        height: 100%;
-        border-right: 3px solid black;
-        font-size: 2em;
-        padding: 1em;
+        height: 74vh;
+        width: 100%;
+    
+        .users {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 20vw;
+            height: 100%;
+            font-size: 2em;
+            padding: .75em;
+            background-color: #FCFAFA;
+            border-right: 4px solid #424B54;
 
-        .usersTitle {
-            text-decoration: underline;
-        }
-    }
-
-    .chatRoom {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 75vw;
-        height: 100%;
-        background-color: #86BAA1;
-
-        .messages {
-            flex-wrap: wrap;
-            height: 56vh;
-            width: 56vw;
-            border: 2px solid black;
-            overflow: scroll;
-            padding: 20px;
-            background-color: white;
-
-            .message {
+            .borderDiv {
                 display: flex;
-                margin-bottom: 5px;
-                letter-spacing: 1.5px;
+                flex-direction: column;
+                align-items: center;
+                height: 100%;
+                width: 100%;
+                border: 10px solid #4E6766;
 
-                .author {
-                    font-weight: bold;
-                    width: 15%;
-                    text-align: end;
-                    padding-right: 20px;
+                .usersTitle {
+                    margin: 5px;
+                    font-size: 1em;
+                    text-decoration: underline;
                 }
 
-                .messageText {
-                    width: 80%;
+                .userList {
+                    font-size: .8em;
                 }
             }
         }
+    
+        .chatRoom {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 83vw;
+            height: 80vh;
+    
+            .messages {
+                flex-wrap: wrap;
+                height: 56vh;
+                width: 56vw;
+                border: 3px solid #424B54;
+                overflow: scroll;
+                padding: 20px;
+                background-color: #FCFAFA;
+                border-radius:10px;
+    
+                .message {
+                    display: flex;
+                    margin-bottom: 5px;
+                    letter-spacing: 1.5px;
+    
+                    .author {
+                        font-weight: bold;
+                        width: 15%;
+                        text-align: end;
+                        padding-right: 20px;
+                    }
+    
+                    .messageText {
+                        width: 80%;
+                    }
+                }
+            }
+    
+            .messageInput {
+                display: flex;
+                justify-content: center;
+                height: 20px;
+                width: 56vw;
+                padding: 20px;
+                border: 3px solid #424B54;
+                background-color: #4E6766;
+                border-radius: 5px;
 
-        .messageInput {
-            width: 56vw;
-            padding: 20px;
-            border: 2px solid black;
+                .chatInput {
+                    height: 18px;
+                    width: 70%;
+                    margin-right: 10px;
+                    border-right: #86BAA1;
+                    border-bottom: #86BAA1;
+                }
+
+                .chatSend {
+                    height: 22px;
+                    border-radius: 4px;
+                }
+            }
         }
     }
 }
+
+@media (max-width: 768px){
+    .chatBackground{
+        .messageView {
+            // flex-direction: column;
+            // align-items: center;
+    
+            .users {
+                // width: 60vw;
+                height: 60%;
+                border-right: none;
+                margin: 20px;
+                border: 2px solid #424B54;
+            }
+    
+            .chatRoom {
+                // margin: 20px;
+            }
+        }   
+    }
+}
+    
+

@@ -52,14 +52,16 @@ class Chat extends Component {
     render(){
         console.log(this.state.users)
         return (
-            <div>
+            <div className="chatBackground">
                 <Header />
                 <div className="messageView">
                     <div className="users">
-                        <p className="usersTitle">USERS</p>
-                        {this.state.users.map((user, i) => {
-                            return (<div key={i}>{user}</div>);
-                        })}
+                        <div className="borderDiv">
+                            <p className="usersTitle">All Users</p>
+                            {this.state.users.map((user, i) => {
+                                return (<div key={i} className="userList">{user}</div>);
+                            })}
+                        </div>
                     </div>
                     <div className="chatRoom">
                         <div className="messages">
@@ -73,8 +75,8 @@ class Chat extends Component {
                             })}
                         </div>
                         <div className="messageInput">
-                            <input  type="text" placeholder="Message" value={this.state.message} onChange={(e) => this.setState({message: e.target.value})}/>
-                            <button onClick={this.sendMessage}>Send</button>
+                            <input  type="text" placeholder="Message" value={this.state.message} onChange={(e) => this.setState({message: e.target.value})} className="chatInput"/>
+                            <button onClick={this.sendMessage} className="chatSend">Send</button>
                         </div>
                     </div>
                 </div>

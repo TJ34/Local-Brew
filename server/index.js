@@ -107,7 +107,7 @@ io.on('connection', function(socket){
         io.emit('RECEIVE_USERS', users);
         socket.emit('RECEIVE_MESSAGE', {
             author: "Server",
-            message: "Welcome!"
+            message: "Welcome to beer chat!"
         })
         socket.broadcast.emit('RECEIVE_MESSAGE', {
             author: "Server",
