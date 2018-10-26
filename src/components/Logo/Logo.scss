@@ -1,4 +1,10 @@
 .logo {
     font-family: 'Rock Salt', Helvetica;
-    font-size: 2em;
+    font-size: 3em;
+}
+
+@media (max-width: 420px){
+    .logo {
+        font-size: 2em;
+    }
 }

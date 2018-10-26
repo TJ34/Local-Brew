@@ -22,6 +22,9 @@ $secondary: #424B54;
     text-decoration: none;
 
     .menu {
+        position: fixed;
+        right: 0;
+        top: 16vh;
         display: flex;
         flex-direction: column;
         align-items: flex-end;
@@ -29,14 +32,17 @@ $secondary: #424B54;
         width: auto;
         background-color: #424B54;
         z-index: 3;
-        position: absolute;
         border-bottom-left-radius: 10px;
+        transition: transform .3s;
+        overflow: scroll;
 
         .logInOut {
             text-decoration: none;
         }
     
         .navButtons{
+            text-align: end;
+            width: 15vw;
             margin: 10px;
             font-size: 1.5em;
             font-weight: bold;
@@ -44,6 +50,23 @@ $secondary: #424B54;
             color: $primary-color;
             border: none;
             cursor: pointer;
-        }  
+        }
+        
+        .navButtons:hover {
+            background-color: black;
+            font-size: 2em;
+            border-radius: 10px;
+            text-align: center;
+            width: 17vw;
+        }
     }
+
+    // #menu.hide {
+    //     transform: translate3d(-100vw, 0, 0);
+    // }
+
+    // #menu.show {
+    //     transform: translate3d(0vw, 0, 0);
+    //     overflow: hidden;
+    // }
 }

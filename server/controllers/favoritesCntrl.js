@@ -15,5 +15,11 @@ module.exports = {
     deleteFavorite(req,res){
         let db = req.app.get('db');
         db.favorites.delete_favorite(req.params.id).then(favorites => {return res.status(200).json(favorites)})
+    },
+    deleteFavorite2(req,res){
+        let db = req.app.get('db');
+        db.favorites.delete_fav(req.params.id).then(favorites => {
+            return res.status(200).json(favorites);
+        })
     }
 }

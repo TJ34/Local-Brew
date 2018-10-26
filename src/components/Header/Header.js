@@ -36,6 +36,12 @@ class Header extends Component {
     }
 
     render(){
+        // var visibility = "hide";
+
+        // if(this.props.menuVisibility){
+        //     visibility = "show";
+        // }
+
         return(
         <div>
             <div className = "header">
@@ -44,7 +50,10 @@ class Header extends Component {
             </div>
             <div className="dropdown">
                 {this.state.showMenu ? (
-                    <div className="menu">
+                    <div
+                        // id="menu"
+                        className="menu"
+                    >
                         {!this.props.user.isAuthed ? 
                             (<a href={process.env.REACT_APP_LOGIN} className="logInOut">
                                 <div className="navButtons">Login</div>
@@ -62,7 +71,7 @@ class Header extends Component {
                             <Link to="/chat"><button className="navButtons">Chat</button></Link>
                             ):null}
                     </div>
-                ): (null)}
+                    ): (null)} 
             </div>
         </div> 
     )}

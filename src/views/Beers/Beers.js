@@ -38,8 +38,12 @@ class Beers extends Component {
         axios.post('/api/favorites', {beer_name, beer_label, beer_desc, abv, style, brewery, user_id, beer_id})
         .then(() => this.getFavorites());
     }
-    
 
+    deleteFavorite = (id) => {
+        axios.delete(`/api/favorites2/${id}`).then(
+            () => this.getFavorites()
+        )
+    }
 
     render(){
         let allBeers = this.state.beers.filter((beer, i) => {
@@ -51,7 +55,8 @@ class Beers extends Component {
                             this.state.favorites.includes(beer.id) ?
                                 <FontAwesomeIcon 
                                     icon="heart" 
-                                    className="heartIcon"/>
+                                    className="heartIcon"
+                                    onClick={() => this.deleteFavorite(beer.id)}/>
                                 
                                 : <FontAwesomeIcon 
                                     icon={['far', 'heart']} 

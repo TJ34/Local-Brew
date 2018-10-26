@@ -21,9 +21,9 @@ class Favorites extends Component {
     }
 
     deleteFavorite = (id) => {
-        axios.delete(`api/favorites/${id}`).then(response => {
+        axios.delete(`api/favorites/${id}`).then(axios.get(`/api/favorites/${this.props.user.user.data.id}`).then(response => {
             this.setState({favs: response.data})
-        })
+        }));
     }
 
     render(){

@@ -1,14 +1,15 @@
 .background {
-    background-image: url(https://s3-us-west-1.amazonaws.com/local-brew1/mnm-all-552510-unsplash.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    
+    
 
     .home {
-        height: 77vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        height: 78vh;
+        // -webkit-clip-path: polygon(0 0, 80% 0, 100% 0, 100% 80%, 100% 100%, 0 100%, 0% 80%, 59% 16%);
+        // clip-path: polygon(0 0, 80% 0, 100% 0, 100% 80%, 100% 100%, 0 100%, 0% 80%, 59% 16%);
+        background-image: url(https://s3-us-west-1.amazonaws.com/local-brew1/mnm-all-552510-unsplash.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
         
         .homeText {
             font-size: 5em;

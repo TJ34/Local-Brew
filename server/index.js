@@ -86,6 +86,7 @@ app.get('/api/bandb/:id', breweryCntrl.beerAndBrewery);
 app.get('/api/favorites/:id', favoritesCntrl.getFavorites);
 app.post('/api/favorites', favoritesCntrl.addFavorite);
 app.delete('/api/favorites/:id', favoritesCntrl.deleteFavorite);
+app.delete('/api/favorites2/:id', favoritesCntrl.deleteFavorite2);
 
 app.get('/api/reviews/:id', reviewsCntrl.getReviews);
 app.post('/api/review', reviewsCntrl.addReview);
