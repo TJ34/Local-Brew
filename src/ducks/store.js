@@ -4,6 +4,7 @@ import userReducer from './userReducer';
 
 const combinedReducers = combineReducers({
     user: userReducer,
+    
 })
 
 const store = createStore(combinedReducers, applyMiddleware(promiseMiddleware()));

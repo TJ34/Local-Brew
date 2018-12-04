@@ -7,7 +7,6 @@ const {json} = require("body-parser");
 const passport = require("passport");
 const session = require("express-session");
 const cors = require("cors");
-const port2 = process.env.PORT || 3002;
 const io = require('socket.io')();
 
 const breweryCntrl = require(`${__dirname}/controllers/breweryCntrl`);
@@ -126,7 +125,7 @@ io.on('connection', function(socket){
     });
 })
 
-io.listen(port2);
-console.log('listening on port ', port2);
+io.listen(port);
+console.log('listening on port ', port);
 
 app.listen(port, () => console.log(`Local Brew up and running on ${port}`))

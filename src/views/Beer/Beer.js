@@ -158,7 +158,7 @@ class Beer extends Component {
                     <p>Reviews</p>
                     {this.props.user.isAuthed ? (
                     <div>
-                        <button onClick={() => this.setState({showModal: true})}>+</button>
+                        <button onClick={() => this.setState({showModal: true})} className="addReview">Add</button>
                         <ReactModal
                             isOpen={this.state.showModal}
                             contentLabel="User Review Form"

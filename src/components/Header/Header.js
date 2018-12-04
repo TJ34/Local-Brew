@@ -36,11 +36,6 @@ class Header extends Component {
     }
 
     render(){
-        // var visibility = "hide";
-
-        // if(this.props.menuVisibility){
-        //     visibility = "show";
-        // }
 
         return(
         <div>
