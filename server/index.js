@@ -7,7 +7,8 @@ const {json} = require("body-parser");
 const passport = require("passport");
 const session = require("express-session");
 const cors = require("cors");
-const io = require('socket.io')();
+const socketio = require('socket.io');
+const path = require('path');
 
 const breweryCntrl = require(`${__dirname}/controllers/breweryCntrl`);
 const {strat, logout} = require(`${__dirname}/controllers/strategy`);
@@ -19,13 +20,15 @@ app.use(cors());
 app.use(
     session({
         secret: process.env.SESSION_SECRET,
-        resave: false,
+        resave: true,
         saveUninitialized: false,
         cookie: {
             maxAge: 100000
         }
     })
 )
+
+app.use( express.static( `${__dirname}/../build` ) );
 
 massive(process.env.CONNECTION_STRING).then(dbInstance => {
     app.set('db', dbInstance);
@@ -93,6 +96,11 @@ app.delete('/api/review/:id', reviewsCntrl.deleteReview);
 app.put('/api/review/:id', reviewsCntrl.editReview);
 app.get('/api/rating/:id', reviewsCntrl.getStarRating);
 
+const expressServer = app.listen(port, () => {
+    console.log('server is listening on port:', port)
+  })
+  
+const io = socketio(expressServer)
 
 let users = [];
 
@@ -125,7 +133,7 @@ io.on('connection', function(socket){
     });
 })
 
-io.listen(port);
-console.log('listening on port ', port);
+app.get('*', (req, res)=>{
+    res.sendFile(path.join(__dirname, '../build/index.html'));
+});
 
-app.listen(port, () => console.log(`Local Brew up and running on ${port}`))

@@ -14,7 +14,7 @@ class Chat extends Component {
             users: []
         };
 
-        this.socket = io('process.env.REACT_APP_CHAT');
+        this.socket = io(process.env.REACT_APP_CHAT);
 
         this.socket.on('RECEIVE_MESSAGE', function(data){
             addMessage(data);

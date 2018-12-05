@@ -10,29 +10,29 @@ class Header extends Component {
         super();
 
         this.state = {
-            isMounted: false,
+            // isMounted: false,
             showMenu: false
         }
     }
 
     componentDidMount(){
-        this.setState({isMounted: true});
+        this.setState({showMenu: false});
     }
 
-    componentWillUnmount(){
-        this.setState({isMounted: false});
-    }
+    // componentWillUnmount(){
+    //     this.setState({isMounted: false});
+    // }
 
     showMenu = () => {
-        if(this.state.isMounted){this.setState({showMenu: true}, () => {
+        this.setState({showMenu: true}, () => {
             document.addEventListener('click', this.closeMenu);
-        })}
+        })
     }
 
     closeMenu = () => {
-        if(this.state.isMounted){this.setState({showMenu: false}, () => {
+        this.setState({showMenu: false}, () => {
             document.removeEventListener('click', this.closeMenu);
-        })}
+        })
     }
 
     render(){
@@ -46,7 +46,6 @@ class Header extends Component {
             <div className="dropdown">
                 {this.state.showMenu ? (
                     <div
-                        // id="menu"
                         className="menu"
                     >
                         {!this.props.user.isAuthed ? 
